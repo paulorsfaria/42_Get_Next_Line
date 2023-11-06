@@ -19,7 +19,7 @@ char	*strjoin(char *stash, char *temp)
 	char	*updated_stash;
 	
 	i = 0;
-	j = 0;
+	j = 0;//temp[0] == null may fk things up
 	updated_stash = (char *)malloc(sizeof(char) * (ft_strlen(stash) + ft_strlen(temp) + 1));
 	if (!updated_stash)
 		return (NULL);
@@ -85,7 +85,7 @@ void	something(int fd, char **stash )
 			ft_free(&temp);
 			return (ft_free(stash));
 		}
-		temp[size] = '\0';
+		temp[size] = '\0';//if t[0] == '\0' ret null else aquilo
 		temp_stash = strjoin(*stash, temp);
 		ft_free(stash);
 		*stash = temp_stash;
