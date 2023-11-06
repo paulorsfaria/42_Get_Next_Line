@@ -48,7 +48,7 @@ char	*get_line(char *stash)
 	i = 0;
 	while (stash[i] != '\n' && stash[i] != '\0')
 		i++;
-	line = (char *)malloc(sizeof(char) * (i + 2));
+	line = (char *)malloc(sizeof(char) * (i + 2));//remove (char *)? and put +1 again 
 	if (!line) 
 		return (NULL);
 	while (j <= i)
@@ -64,9 +64,9 @@ char	*get_next_line(int fd)
 {
 	static char	*stash;
 	char		*line;
-	char		*temp;
+	char		*temp;// move ft?
 	
-	if (fd < 0 || BUFFER_SIZE < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	if (stash == NULL) 
 	{
