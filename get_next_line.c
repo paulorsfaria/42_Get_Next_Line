@@ -6,7 +6,7 @@
 /*   By: paulo-do <paulo-do@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 10:16:40 by paulo-do          #+#    #+#             */
-/*   Updated: 2023/11/06 14:53:04 by paulo-do         ###   ########.fr       */
+/*   Updated: 2023/11/06 15:54:48 by paulo-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	*get_line(char *stash)
 	i = 0;
 	while (stash[i] != '\n' && stash[i] != '\0')
 		i++;
-	line = (char *)malloc(sizeof(char) * (i + 1));
+	line = (char *)malloc(sizeof(char) * (i + 2));
 	if (!line) 
 		return (NULL);
 	while (j <= i)
@@ -65,7 +65,9 @@ char	*get_next_line(int fd)
 	static char	*stash;
 	char		*line;
 	char		*temp;
-
+	
+	if (fd < 0 || BUFFER_SIZE < 0)
+		return (NULL);
 	if (stash == NULL) 
 	{
 		stash = (char *)malloc(sizeof(char));
@@ -97,7 +99,8 @@ int main(void)
 	{
 		printf("ptn %d: %s",i, pnt);
 		i++;
-		free(pnt);
+		ft_free(&pnt);
 	}
+	ft_free(&pnt);
 	close(file);
 }
