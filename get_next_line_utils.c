@@ -19,7 +19,7 @@ char	*strjoin(char *stash, char *temp)
 	char	*updated_stash;
 	
 	i = 0;
-	j = 0;//temp[0] == null may fk things up
+	j = 0;//temp[0] == '\0' may fk things up
 	updated_stash = (char *)malloc(sizeof(char) * (ft_strlen(stash) + ft_strlen(temp) + 1));
 	if (!updated_stash)
 		return (NULL);
