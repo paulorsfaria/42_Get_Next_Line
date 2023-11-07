@@ -6,7 +6,7 @@
 /*   By: paulo-do <paulo-do@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 10:16:53 by paulo-do          #+#    #+#             */
-/*   Updated: 2023/11/06 14:50:44 by paulo-do         ###   ########.fr       */
+/*   Updated: 2023/11/07 18:14:29 by paulo-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@ char	*strjoin(char *stash, char *temp)
 	int		i;
 	int		j;
 	char	*updated_stash;
-	
+
 	i = 0;
-	j = 0;//temp[0] == '\0' may fk things up
-	updated_stash = (char *)malloc(sizeof(char) * (ft_strlen(stash) + ft_strlen(temp) + 1));
+	j = 0;
+	updated_stash = (char *)malloc(sizeof(char) * 
+			((ft_strlen(stash) + ft_strlen(temp)) + 1));
 	if (!updated_stash)
 		return (NULL);
 	while (stash[j] != '\0')
@@ -47,7 +48,7 @@ int	ft_strlen(const char *str)
 int	checkenter(char *stash)
 {
 	int	i;
-	
+
 	i = 0;
 	while (stash[i] != '\0')
 	{
@@ -58,7 +59,7 @@ int	checkenter(char *stash)
 	return (0);
 }
 
-void ft_free(char **t)
+void	ft_free(char **t)
 {
 	if (t && *t)
 	{
@@ -73,7 +74,7 @@ void	something(int fd, char **stash )
 	char	*temp_stash;
 	int		size;
 
-	temp = (char *) malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	temp = (char *) malloc(sizeof(char) * BUFFER_SIZE + 1);// problems here when buffer 42 look into it
 	if (!temp)
 		return (ft_free(stash));
 	size = 1;
@@ -85,11 +86,10 @@ void	something(int fd, char **stash )
 			ft_free(&temp);
 			return (ft_free(stash));
 		}
-		temp[size] = '\0';//if t[0] == '\0' ret null else aquilo
+		temp[size] = '\0';
 		temp_stash = strjoin(*stash, temp);
 		ft_free(stash);
 		*stash = temp_stash;
 	}
 	ft_free(&temp);
 }
-

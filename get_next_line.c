@@ -6,7 +6,7 @@
 /*   By: paulo-do <paulo-do@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 10:16:40 by paulo-do          #+#    #+#             */
-/*   Updated: 2023/11/06 15:54:48 by paulo-do         ###   ########.fr       */
+/*   Updated: 2023/11/07 18:16:20 by paulo-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*trim_stash(char *stash)
 	i = 0;
 	while (stash[i] != '\n' && stash[i] != '\0')
 		i++;
-	tempstash = (char *)malloc(sizeof(char) *(ft_strlen(stash) - i));
+	tempstash = (char *)malloc(sizeof(char) *(ft_strlen(stash) - i) + 1);
 	if (!tempstash)
 		return (NULL);
 	if (stash[i] == '\n')
@@ -48,7 +48,7 @@ char	*get_line(char *stash)
 	i = 0;
 	while (stash[i] != '\n' && stash[i] != '\0')
 		i++;
-	line = (char *)malloc(sizeof(char) * (i + 2));//remove (char *)? and put +1 again 
+	line = (char *)malloc(sizeof(char) * (i + 1)); 
 	if (!line) 
 		return (NULL);
 	while (j <= i)
@@ -64,8 +64,8 @@ char	*get_next_line(int fd)
 {
 	static char	*stash;
 	char		*line;
-	char		*temp;// move ft?
-	
+	char		*temp;
+
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	if (stash == NULL) 
@@ -85,7 +85,7 @@ char	*get_next_line(int fd)
 	temp = trim_stash(stash);
 	ft_free(&stash);
 	stash = temp;
-	if(!stash || !*stash)
+	if (!stash || !*stash)
 		ft_free(&stash);
 	return (line);
 }
@@ -93,14 +93,16 @@ int main(void)
 {
 	int file;
 	char *pnt;
-	int i = 1;
+	//int i = 1;
 	file = open("test01", O_RDONLY);
-	while ((pnt = get_next_line(file)))
-	{
-		printf("ptn %d: %s",i, pnt);
-		i++;
-		ft_free(&pnt);
-	}
+	// while ((pnt = get_next_line(file)))
+	// {
+	// 	printf("ptn %d: %s",i, pnt);
+	// 	i++;
+	// 	ft_free(&pnt);
+	// }
+	pnt = get_next_line(file);
+	//printf("ptn: %s", pnt);
 	ft_free(&pnt);
 	close(file);
 }
