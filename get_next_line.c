@@ -6,7 +6,7 @@
 /*   By: paulo-do <paulo-do@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 10:16:40 by paulo-do          #+#    #+#             */
-/*   Updated: 2023/11/07 18:16:20 by paulo-do         ###   ########.fr       */
+/*   Updated: 2023/11/07 18:20:12 by paulo-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,20 +89,20 @@ char	*get_next_line(int fd)
 		ft_free(&stash);
 	return (line);
 }
-int main(void)
-{
-	int file;
-	char *pnt;
-	//int i = 1;
-	file = open("test01", O_RDONLY);
-	// while ((pnt = get_next_line(file)))
-	// {
-	// 	printf("ptn %d: %s",i, pnt);
-	// 	i++;
-	// 	ft_free(&pnt);
-	// }
-	pnt = get_next_line(file);
-	//printf("ptn: %s", pnt);
-	ft_free(&pnt);
-	close(file);
-}
+// int main(void)
+// {
+// 	int file;
+// 	char *pnt;
+// 	//int i = 1;
+// 	file = open("test01", O_RDONLY);
+// 	// while ((pnt = get_next_line(file)))
+// 	// {
+// 	// 	printf("ptn %d: %s",i, pnt);
+// 	// 	i++;
+// 	// 	ft_free(&pnt);
+// 	// }
+// 	pnt = get_next_line(file);
+// 	//printf("ptn: %s", pnt);
+// 	ft_free(&pnt);
+// 	close(file);
+// }
