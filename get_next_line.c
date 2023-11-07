@@ -22,7 +22,7 @@ char	*trim_stash(char *stash)
 	i = 0;
 	while (stash[i] != '\n' && stash[i] != '\0')
 		i++;
-	tempstash = (char *)malloc(sizeof(char) *(ft_strlen(stash) - i) + 1);
+	tempstash = (char *)malloc(sizeof(char) *((ft_strlen(stash) - i) + 1));
 	if (!tempstash)
 		return (NULL);
 	if (stash[i] == '\n')
