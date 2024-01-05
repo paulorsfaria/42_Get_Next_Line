@@ -26,10 +26,10 @@ int main() {
     int fd;
     char *line;
 
-    fd = open("example.txt", O_RDONLY);
-    while (get_next_line(fd, &line) > 0) {
-        printf("%s\n", line);
-        free(line);
+    fd = open("example", O_RDONLY);
+    while ((line = get_next_line(fd)) != NULL) {
+        printf("%s", line);
+        free(line); // Remember to free the allocated memory
     }
     close(fd);
     return 0;
