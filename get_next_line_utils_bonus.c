@@ -35,8 +35,8 @@ char	*strjoin(char *stash, char *temp)
 		stash = malloc(sizeof(char));
 		stash[0] = '\0';
 	}
-	temp_stash = (char *)malloc(sizeof(char) * 
-			((ft_strlen(stash) + ft_strlen(temp)) + 1));
+	temp_stash = (char *)malloc(sizeof(char)
+			* ((ft_strlen(stash) + ft_strlen(temp)) + 1));
 	if (!stash)
 		return (NULL);
 	while (stash[i] != '\0')

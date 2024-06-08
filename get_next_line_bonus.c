@@ -53,7 +53,7 @@ char	*get_new_line(char *stash)
 		line = malloc(sizeof(char) * (i + 1));
 	else
 		line = malloc(sizeof(char) * (i + 2));
-	if (!line) 
+	if (!line)
 		return (NULL);
 	i = 0;
 	while (stash[i] != '\0' && stash[i] != '\n')
